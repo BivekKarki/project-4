@@ -1,5 +1,24 @@
-const App = () => {
-  return <div>App</div>;
-};
+import styled from 'styled-components'
 
-export default App;
+function App() {
+
+  return (
+    <>
+      <MainContainer>
+        <TopContauner>
+          <div className='logo'><img src="/logo.svg" alt='logo' /></div>
+        </TopContauner>
+      </MainContainer>
+    </>
+  )
+}
+
+export default App
+
+const MainContainer = styled.div`
+
+`;
+
+const TopContainer = styled.div`
+
+`;
