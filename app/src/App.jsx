@@ -57,16 +57,17 @@ console.log(data);
           <Button>Dinner</Button>
         </FilterContainer>
 
-        <SearchResult data={data} />
+        
       </Container>
+      <SearchResult data={data} />
     </>
   )
 }
 
 export default App
 
-const Container = styled.div`
-  width: 1200px;
+export const Container = styled.div`
+  max-width: 1200px;
   margin: 0 auto;
 
 `;
