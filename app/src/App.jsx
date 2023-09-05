@@ -8,6 +8,7 @@ export const BASE_URL = "http://localhost:9000";
 function App() {
 
   const [data, setData] = useState(null);
+  const [filterData, setFilterData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   
@@ -23,7 +24,8 @@ useEffect( ()=> {
       const json = await response.json();
       
       setData(json);
-      setLoading(false)
+      setFilterData(json);
+      setLoading(false);
 
     }catch (error){
       setError("Unable to fetch data");
@@ -33,6 +35,20 @@ useEffect( ()=> {
 }, []);
  
 console.log(data);
+
+const searchFood = (e) => {
+  const searchValue = e.target.value;
+  console.log(searchValue);
+
+  if(searchValue == ""){
+    setFilterData(null)
+  }
+
+  const filter = data?.filter((food) => 
+    food.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
+  setFilterData(filter);
+}
 
   if(error) return<div>{error}</div>;
   if(loading) return<div>loading...</div>
@@ -46,7 +62,7 @@ console.log(data);
           </div>
 
           <div className='search'>
-            <input placeholder='Search Food...' />
+            <input onChange={searchFood} placeholder='Search Food...' />
           </div>
         </TopContainer>
 
@@ -59,7 +75,7 @@ console.log(data);
 
         
       </Container>
-      <SearchResult data={data} />
+      <SearchResult data={filterData} />
     </>
   )
 }
