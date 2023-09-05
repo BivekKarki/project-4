@@ -102,7 +102,7 @@ const searchFood = (e) => {
         <FilterContainer>
           {
             filterBtns.map((value)=>(
-              <Button key={value.name} onClick={() => filterFood(value.type)}>{value.name}</Button>
+              <Button isSelected={selectedBtn === value.type} key={value.name} onClick={() => filterFood(value.type)}>{value.name}</Button>
             ))
           }
           {/* <Button onClick={() => filterFood("all")}>All</Button>
@@ -127,7 +127,7 @@ export const Container = styled.div`
 `;
 
 const TopContainer = styled.div`
-  min-height: 140px;
+  height: 140px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -144,6 +144,10 @@ const TopContainer = styled.div`
       padding: 0 10px;
     }
   }
+  @media (0 < width < 600px) {
+    flex-direction: column;
+    height: 120px;
+  }
 `;
 
 const FilterContainer = styled.section`
@@ -155,7 +159,7 @@ const FilterContainer = styled.section`
 `;
 
 export const Button = styled.section`
-  background-color: #ff4343;
+  background-color: ${({isSelected}) => isSelected ? "#8c1b1b" : "#ff4343" } ;
   border-radius: 5px;
   padding: 6px 12px;
   border: none;
