@@ -142,6 +142,9 @@ const TopContainer = styled.div`
       height: 30px;
       font-size: 16px;
       padding: 0 10px;
+      &::placeholder{
+        color: #fff;
+      }
     }
   }
   @media (0 < width < 600px) {
@@ -160,6 +163,7 @@ const FilterContainer = styled.section`
 
 export const Button = styled.section`
   background-color: ${({isSelected}) => isSelected ? "#8c1b1b" : "#ff4343" } ;
+  outline: 1px solid ${({isSelected}) => isSelected ? "#ffffff" : "#ff4343" } ;
   border-radius: 5px;
   padding: 6px 12px;
   border: none;
